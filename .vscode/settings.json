@@ -1,0 +1,6 @@
+{
+  "editor.inlineSuggest.enabled": false,
+  "github.copilot.inlineSuggest.enable": false,
+  "editor.suggestOnTriggerCharacters": true
+
+}
