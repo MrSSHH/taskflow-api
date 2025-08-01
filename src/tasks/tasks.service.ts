@@ -19,7 +19,7 @@ export class TasksService {
   findAll(paginationDto: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto;
     return this.taskRepository.find({
-      relations: ['dueDate'],
+      relations: ['dueDates'],
       take: limit,
       skip: offset,
     });
