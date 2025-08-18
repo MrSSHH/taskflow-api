@@ -15,7 +15,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'pass123',
       database: 'mydb',
       autoLoadEntities: true,
-      synchronize: true, // Remove when going production mode
     }),
   ],
   controllers: [AppController],
