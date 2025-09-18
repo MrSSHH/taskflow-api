@@ -9,6 +9,6 @@ export class CreateTaskDto {
   readonly body: string;
 
   @Optional()
-  @IsDateString(undefined, { each: true })
-  readonly dueDates: string[];
+  @IsDateString(undefined)
+  readonly dueDate: string;
 }

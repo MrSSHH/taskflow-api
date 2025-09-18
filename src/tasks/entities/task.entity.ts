@@ -6,7 +6,6 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
-import { DueDate } from './dueDate.entity';
 
 @Entity()
 export class Task {
@@ -19,9 +18,8 @@ export class Task {
   @Column()
   body: string;
 
-  @JoinTable()
-  @ManyToMany(() => DueDate, (dueDate) => dueDate.tasks)
-  dueDates: DueDate[];
+  @Column()
+  dueDate: string;
 
   @CreateDateColumn()
   createdDate: Date;

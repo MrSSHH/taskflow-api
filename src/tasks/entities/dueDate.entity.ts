@@ -1,5 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
-import { Task } from './task.entity';
+import { Column, Entity, PrimaryGeneratedColumn  } from 'typeorm';
 
 @Entity()
 export class DueDate {
@@ -9,6 +8,4 @@ export class DueDate {
   @Column()
   dueDates: string;
 
-  @ManyToMany(() => Task, (task) => task.dueDates)
-  tasks: Task[];
 }
