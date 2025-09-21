@@ -19,7 +19,10 @@ export class TasksController {
   findAll(@Query() paginationDto: PaginationDto) {
     return this.tasksService.findAll(paginationDto);
   }
-
+  @Get('overdue')
+  getOverdueAmt(@Query() paginationDto: PaginationDto) {
+    return this.tasksService.getOverdueAmt(paginationDto);
+  }
   @Post()
   create(@Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create(createTaskDto);
