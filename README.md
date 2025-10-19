@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Taskflow API • README</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; max-width: 800px; }
-    pre { background:#f4f4f4; padding:15px; overflow-x:auto; }
-    code { background:#f4f4f4; padding:2px 4px; }
-    h1, h2, h3 { color:#333; }
-    a { color:#0366d6; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    table { border-collapse:collapse; width:100%; margin:20px 0; }
-    th, td { border:1px solid #ddd; padding:8px; }
-    th { background:#f4f4f4; text-align:left; }
-    section { margin-bottom:40px; }
-  </style>
-</head>
 <body>
 
 <h1>Taskflow API</h1>
