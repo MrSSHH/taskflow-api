@@ -154,5 +154,3 @@ Licensed under the **MIT License** © 2025 **Taskflow**
 
 [View on GitHub →](https://github.com/MrSSHH/taskflow-api)
 ```
-
-Copy everything above (from the first to the last backtick set) — when you paste it into your README editor, it will keep every inner code snippet intact and render perfectly.
