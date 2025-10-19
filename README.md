@@ -1,98 +1,160 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Taskflow API • README</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; max-width: 800px; }
+    pre { background:#f4f4f4; padding:15px; overflow-x:auto; }
+    code { background:#f4f4f4; padding:2px 4px; }
+    h1, h2, h3 { color:#333; }
+    a { color:#0366d6; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    table { border-collapse:collapse; width:100%; margin:20px 0; }
+    th, td { border:1px solid #ddd; padding:8px; }
+    th { background:#f4f4f4; text-align:left; }
+    section { margin-bottom:40px; }
+  </style>
+</head>
+<body>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h1>Taskflow API</h1>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<p><strong>Taskflow API</strong> is a <em>NestJS + PostgreSQL</em> backend that powers the Taskflow productivity app — enabling secure task management, user authentication via Google OAuth2, and robust RESTful endpoints for future extensions.</p>
 
-## Description
+<section>
+  <h2>🚀 Features</h2>
+  <ul>
+    <li>🔐 <strong>Google OAuth2 Authentication</strong>: integrated via the official Google Auth Library, generates JWTs for session management.</li>
+    <li>👤 <strong>User Management</strong>: automatic user creation and lookup upon first Google login.</li>
+    <li>✅ <strong>Task Management</strong>: CRUD operations for tasks, including creation, updating, listing, and overdue tracking.</li>
+    <li>⚙️ <strong>Database Integration</strong>: using <code>typeorm</code> with PostgreSQL, migrations and entity synchronization.</li>
+    <li>🌿 <strong>Environment-Based Configuration</strong>: secrets and settings loaded via <code>@nestjs/config</code> and <code>.env</code> files.</li>
+  </ul>
+</section>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<section>
+  <h2>🧩 Tech Stack</h2>
+  <table>
+    <tr><th>Layer</th><th>Technology</th></tr>
+    <tr><td>Backend Framework</td><td>NestJS</td></tr>
+    <tr><td>Database</td><td>PostgreSQL</td></tr>
+    <tr><td>ORM</td><td>TypeORM</td></tr>
+    <tr><td>Authentication</td><td>Google OAuth2 + JWT</td></tr>
+    <tr><td>Config</td><td>@nestjs/config, dotenv</td></tr>
+    <tr><td>Validation & Serialization</td><td>class-validator, class-transformer</td></tr>
+  </table>
+</section>
 
-## Project setup
+<section>
+  <h2>🛠️ Setup & Installation</h2>
+  <ol>
+    <li><strong>Clone the repository</strong>
+      <pre>git clone https://github.com/MrSSHH/taskflow-api.git
+cd taskflow-api</pre>
+    </li>
+    <li><strong>Install dependencies</strong>
+      <pre>npm install</pre>
+    </li>
+    <li><strong>Configure environment variables</strong> – create a <code>.env</code> file in the root:
+      <pre>
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=your_db_user
+DB_PASSWORD=your_db_pass
+DB_NAME=your_db_name
 
-```bash
-$ npm install
-```
+# JWT
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=1h
 
-## Compile and run the project
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+      </pre>
+    </li>
+    <li><strong>Run development server</strong>
+      <pre>npm run start:dev</pre>
+    </li>
+  </ol>
+</section>
 
-```bash
-# development
-$ npm run start
+<section>
+  <h2>🗃️ Migrations</h2>
+  <p>When using migrations, follow the commands below:</p>
+  <ul>
+    <li><strong>Generate a migration:</strong>
+      <pre>npm run migration:generate</pre>
+    </li>
+    <li><strong>Run migrations:</strong>
+      <pre>npm run migration:run</pre>
+    </li>
+    <li><strong>Revert last migration:</strong>
+      <pre>npm run migration:revert</pre>
+    </li>
+  </ul>
+</section>
 
-# watch mode
-$ npm run start:dev
+<section>
+  <h2>🔑 API Endpoints</h2>
+  <h3>Auth</h3>
+  <table>
+    <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+    <tr><td>POST</td><td><code>/api/auth/google</code></td><td>Verify Google ID token and issue JWT</td></tr>
+  </table>
+  <h3>Tasks</h3>
+  <table>
+    <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+    <tr><td>GET</td><td><code>/api/tasks</code></td><td>List all tasks (requires JWT)</td></tr>
+    <tr><td>POST</td><td><code>/api/tasks</code></td><td>Create a new task</td></tr>
+    <tr><td>PATCH</td><td><code>/api/tasks/:id</code></td><td>Update an existing task</td></tr>
+    <tr><td>DELETE</td><td><code>/api/tasks/:id</code></td><td>Delete a task</td></tr>
+    <tr><td>GET</td><td><code>/api/tasks/overdue</code></td><td>Count overdue tasks</td></tr>
+  </table>
+</section>
 
-# production mode
-$ npm run start:prod
-```
+<section>
+  <h2>📁 Project Structure</h2>
+  <pre>
+src/
+  ├── auth/
+  │     ├── auth.controller.ts
+  │     ├── auth.service.ts
+  │     ├── dto/
+  │     │   └── google-login.dto.ts
+  │     └── auth.module.ts
+  ├── users/
+  │     ├── entities/
+  │     │   └── user.entity.ts
+  │     ├── dto/
+  │     │   └── create-user.dto.ts
+  │     └── users.service.ts
+  ├── tasks/
+  │     ├── entities/
+  │     │   └── task.entity.ts
+  │     ├── tasks.service.ts
+  │     └── tasks.controller.ts
+  ├── app.module.ts
+  ├── main.ts
+  └── data-source.ts
+  </pre>
+</section>
 
-## Run tests
+<section>
+  <h2>🧰 Development Utilities</h2>
+  <p><strong>Reset database for local dev</strong>:</p>
+  <pre>
+# Only for dev & local environments:
+synchronize: true
+dropSchema: true
+  </pre>
+  <p>Use them in <code>TypeOrmModule.forRoot()</code> for quick refresh of schema.</p>
+</section>
 
-```bash
-# unit tests
-$ npm run test
+<section>
+  <h2>📜 License</h2>
+  <p>This project is licensed under the <strong>MIT License</strong>.</p>
+</section>
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+</body>
+</html>
