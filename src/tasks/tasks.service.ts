@@ -16,10 +16,10 @@ export class TasksService {
   async getOverdueAmt(paginationDto: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto;
     const [tasks, totalTasks] = await this.taskRepository.findAndCount({
-      where: {dueDate: LessThan(new Date().toISOString())},
-      order: {dueDate: "ASC"}
-    })
-    return {"Overdue": totalTasks};
+      where: { dueDate: LessThan(new Date().toISOString()) },
+      order: { dueDate: 'ASC' },
+    });
+    return { Overdue: totalTasks };
   }
   async findAll(paginationDto: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto;
@@ -29,8 +29,6 @@ export class TasksService {
     });
   }
 
-
-
   async create(createTaskDto: CreateTaskDto) {
     const task = this.taskRepository.create({
       ...createTaskDto,
@@ -39,7 +37,6 @@ export class TasksService {
   }
 
   async update(id: number, updateTaskDto: UpdateTaskDto) {
-
     const task = await this.taskRepository.preload({
       id: id,
       ...updateTaskDto,
@@ -60,15 +57,4 @@ export class TasksService {
 
     return this.taskRepository.remove(task);
   }
-
-  // private async preloadDueDates(dueDateStr: string): Promise<DueDate> {
-  //   const preloadDueDate = await this.dueDateRepository.findOne({
-  //     where: { dueDates: dueDateStr },
-  //   });
-  //   if (preloadDueDate) {
-  //     return preloadDueDate;
-  //   }
-  //   const dueDate = this.dueDateRepository.create({ dueDates: dueDateStr });
-  //   return this.dueDateRepository.save(dueDate);
-  // }
 }

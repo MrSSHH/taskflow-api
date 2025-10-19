@@ -7,7 +7,7 @@ export const AppDataSource = new DataSource({
   username: 'benji',
   password: 'pass123',
   database: 'mydb',
-  entities: ['dist/**/*.entity.js'],     // compiled entities
-  migrations: ['dist/migrations/*.js'],  // compiled migrations
-  synchronize: false,                    // never true with migrations
+  entities: ['dist/**/*.entity.js'],
+  migrations: ['dist/migrations/*.js'], // compiled migrations
+  synchronize: false, // never true with migrations
 });

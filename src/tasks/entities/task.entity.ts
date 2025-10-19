@@ -3,11 +3,9 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  ManyToMany,
-  JoinTable,
 } from 'typeorm';
 
-@Entity()
+@Entity('Tasks')
 export class Task {
   @PrimaryGeneratedColumn()
   id: number;
