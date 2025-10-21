@@ -59,7 +59,7 @@ Taskflow API is a modern **NestJS + PostgreSQL** backend powering the Taskflow p
 
 4. **Start the Development Server**
    ```
-   npm run start:dev
+   ./start-dev-env.sh ( requires Docker )
    ```
 
 ---
