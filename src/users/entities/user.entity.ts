@@ -19,6 +19,9 @@ export class User {
   @Column({ nullable: true })
   picture?: string;
 
+  @Column({ type: 'text', nullable: true })
+  jwtRefreshToken: string | null;
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 }

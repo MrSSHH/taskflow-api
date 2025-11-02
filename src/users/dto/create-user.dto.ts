@@ -15,4 +15,7 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   picture?: string;
+
+  @IsString()
+  jwtRefreshToken: string | null;
 }
