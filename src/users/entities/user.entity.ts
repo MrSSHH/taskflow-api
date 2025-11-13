@@ -1,4 +1,11 @@
-import { Column, Entity, Unique, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from 'src/tasks/entities/task.entity';
+import {
+  Column,
+  Entity,
+  Unique,
+  PrimaryGeneratedColumn,
+  OneToMany,
+} from 'typeorm';
 
 @Entity('Users')
 @Unique(['googleId'])
@@ -21,6 +28,9 @@ export class User {
 
   @Column({ type: 'text', nullable: true })
   jwtRefreshToken: string | null;
+
+  @OneToMany(() => Task, (task) => task.user, { cascade: true })
+  tasks: Task[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

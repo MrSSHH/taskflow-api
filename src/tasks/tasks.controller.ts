@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Query,
+  Req,
   UseGuards,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
@@ -19,16 +20,23 @@ import { AuthGuard } from 'src/auth/auth.guard';
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
   @Get()
-  findAll(@Query() paginationDto: PaginationDto) {
-    return this.tasksService.findAll(paginationDto);
+  async findAll(@Req() req, @Query() paginationDto: PaginationDto) {
+    const refreshToken = await this.tasksService.getRefreshTokenFromReq(req);
+    return this.tasksService.findAll(paginationDto, refreshToken);
   }
   @Get('overdue')
   getOverdueAmt(@Query() paginationDto: PaginationDto) {
     return this.tasksService.getOverdueAmt(paginationDto);
   }
   @Post()
-  create(@Body() createTaskDto: CreateTaskDto) {
-    return this.tasksService.create(createTaskDto);
+  async create(@Body() createTaskDto: CreateTaskDto, @Req() req: Request) {
+    const refreshToken = await this.tasksService.getRefreshTokenFromReq(req);
+    console.log(
+      'Refresh token received on tasks.controller.ts <:34>:',
+      refreshToken,
+    );
+
+    return this.tasksService.create(createTaskDto, refreshToken);
   }
 
   @Patch(':id')
