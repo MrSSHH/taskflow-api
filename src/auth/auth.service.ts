@@ -60,7 +60,7 @@ export class AuthService {
       );
 
       const hashedRefreshToken = await this.hashPassword(refreshToken);
-      this.usersService.updateRefreshToken(user!, hashedRefreshToken);
+      await this.usersService.updateRefreshToken(user!, hashedRefreshToken);
 
       // Return plain tokens to client
       return { accessToken, refreshToken };
@@ -78,7 +78,10 @@ export class AuthService {
     if (!firstTimeUser) {
       // Find user by stored refresh token
       user = await this.usersService.findByRefreshToken(refreshToken);
-      console.log('FOUND USER : ' + user?.jwtRefreshToken);
+      console.log(
+        `[AuthService] Found user for refresh token: ` +
+          `id=${user?.id}, email=${user?.email}`,
+      );
       if (!user) throw new UnauthorizedException('Invalid refresh token');
     }
 
@@ -91,7 +94,9 @@ export class AuthService {
         ) as any,
       },
     );
-    console.log(`Issued a new access token: ${newAccessToken}`);
+    console.log(
+      `[AuthService] Issued new access token for user id=${user?.id}`,
+    );
     return newAccessToken;
   }
 

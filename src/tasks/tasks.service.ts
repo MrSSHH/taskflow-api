@@ -16,10 +16,16 @@ export class TasksService {
     private userService: UsersService,
   ) {}
 
-  async getOverdueAmt(paginationDto: PaginationDto) {
+  async getOverdueAmt(paginationDto: PaginationDto, refreshToken: string) {
     const { limit = 10, offset = 0 } = paginationDto;
+    const user = await this.userService.findByRefreshToken(refreshToken);
+    if (!user) throw new NotFoundException(`User #${refreshToken} not found`);
+
     const [tasks, totalTasks] = await this.taskRepository.findAndCount({
-      where: { dueDate: LessThan(new Date().toISOString()) },
+      where: {
+        dueDate: LessThan(new Date().toISOString()),
+        user: { id: user.id },
+      },
       order: { dueDate: 'ASC' },
     });
     return { Overdue: totalTasks };
