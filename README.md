@@ -45,17 +45,22 @@ Taskflow API is a modern **NestJS + PostgreSQL** backend powering the Taskflow p
    # Database Configuration
    DB_HOST=localhost
    DB_PORT=5432
-   DB_USERNAME=your_db_user
-   DB_PASSWORD=your_db_pass
-   DB_NAME=your_db_name
-
-   # JWT
-   JWT_SECRET=your_secret_key
-   JWT_EXPIRES_IN=1h
-
-   # Google OAuth
-   GOOGLE_CLIENT_ID=your_google_client_id
-   ```
+   DB_USERNAME=benji
+   DB_PASSWORD=pass123
+   DB_NAME=mydb
+   
+   # Secret key used to sign refresh JWT token
+   JWT_REFRESH_SECRET=example_secret1234
+   
+   # Secret key used to sign access JWT token
+   JWT_ACCESS_SECRET=example_secret_212
+   
+   # JWT refresh expiration time 
+   JWT_REFRESH_EXPIRES_IN="7d"
+   
+   # JWT access expiration time 
+   JWT_ACCESS_EXPIRES_IN="15m"
+```
 
 4. **Start the Development Server**
    * Requires Docker to be installed.
