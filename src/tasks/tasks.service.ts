@@ -43,7 +43,7 @@ export class TasksService {
       relations: ['user'],
     });
   }
-  async getRefreshTokenFromReq(req: Request) {
+  getRefreshTokenFromReq(req: Request) {
     const authHeader = req.headers['authorization'];
     const refreshToken = authHeader?.split(' ')[1];
     return refreshToken;

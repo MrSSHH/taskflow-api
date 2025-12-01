@@ -8,9 +8,11 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:8100', // Ionic dev (localhost)
-      'http://192.168.60.22:8100', // Ionic dev (LAN)
+      'http://192.168.50.52:8100', // Ionic dev (LAN)
       'http://localhost:3000', // if you also use 3000 for web
-      'http://192.168.60.22:3000',
+      'https://localhost', // if you also use 3000 for web
+
+      'http://192.168.50.52:3000',
       'capacitor://localhost', // native Capacitor apps (no CORS in native, but safe to keep)
       'ionic://localhost',
     ],
